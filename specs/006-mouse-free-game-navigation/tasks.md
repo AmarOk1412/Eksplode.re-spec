@@ -90,18 +90,18 @@ description: "Task list for mouse-free game navigation"
 
 ### Tests for this phase
 
-- [ ] T020 [P] [US2] Write `game/crates/web/js-tests/osk.test.mjs` for the on-screen keyboard reducer: the buffer is "Never longer than the field's `maxlength` (player name 16, room name 24); control characters are dropped", shift changes letter case, backspace and space work, confirm returns the buffer, cancel restores the original, the cursor stays on an enabled key, and an empty player name is allowed in the buffer.
-- [ ] T021 [P] [US1] Add markup assertions to `game/crates/web/tests/http.rs` for the on-screen keyboard layer (`osk` and its key grid) and for the lobby controls staying reachable.
-- [ ] T022 [US1] Extend `game/scripts/browser-smoke.mjs` with a keyboard-only lobby walk: Tab to the room name and type, change mode and board with the keyboard, Enter on a focused Add bot adds a bot and does not start the match, Change look moves focus into the editor, a colour is chosen with arrows, Done returns focus to Change look, Ready toggles, and Enter on Start starts.
-- [ ] T023 [US2] Extend `game/scripts/browser-smoke.mjs` with a synthetic-controller lobby walk: rename the room with the on-screen keyboard (confirm and cancel), cycle mode, board and time with left and right, A on Add bot, enter and leave the character editor.
+- [X] T020 [P] [US2] Write `game/crates/web/js-tests/osk.test.mjs` for the on-screen keyboard reducer: the buffer is "Never longer than the field's `maxlength` (player name 16, room name 24); control characters are dropped", shift changes letter case, backspace and space work, confirm returns the buffer, cancel restores the original, the cursor stays on an enabled key, and an empty player name is allowed in the buffer.
+- [X] T021 [P] [US1] Add markup assertions to `game/crates/web/tests/http.rs` for the on-screen keyboard layer (`osk` and its key grid) and for the lobby controls staying reachable.
+- [X] T022 [US1] Extend `game/scripts/browser-smoke.mjs` with a keyboard-only lobby walk: Tab to the room name and type, change mode and board with the keyboard, Enter on a focused Add bot adds a bot and does not start the match, Change look moves focus into the editor, a colour is chosen with arrows, Done returns focus to Change look, Ready toggles, and Enter on Start starts.
+- [X] T023 [US2] Extend `game/scripts/browser-smoke.mjs` with a synthetic-controller lobby walk: rename the room with the on-screen keyboard (confirm and cancel), cycle mode, board and time with left and right, A on Add bot, enter and leave the character editor.
 
 ### Implementation for this phase
 
-- [ ] T024 [US2] Implement the on-screen keyboard reducer in `game/crates/web/assets/nav.js` until T020 passes.
-- [ ] T025 [US2] Add the on-screen keyboard layer markup (letters, digits, space, a few punctuation marks, shift, backspace, confirm, cancel) to `game/crates/web/assets/index.html`.
-- [ ] T026 [US2] Style the on-screen keyboard and the lobby controls' focus states in `game/crates/web/assets/style.css`.
-- [ ] T027 [US1] In `game/crates/web/assets/app.js` make the lobby keyboard-operable: the window Enter-to-start handler must apply only when the target is not a button, focus enters the character editor when Change look opens it and returns to Change look on Done, lobby re-renders (slot cards) keep focus, arrows move between lobby buttons using the T007 movement, and colour swatches move their selection with left and right.
-- [ ] T028 [US2] In `game/crates/web/assets/app.js` drive the lobby from the controller and open the on-screen keyboard from a focused text field with A (confirm writes the text back and fires `input`, cancel or B restores the original and returns focus to the field), with left and right adjusting the lobby selects, checkbox and the editor selects.
+- [X] T024 [US2] Implement the on-screen keyboard reducer in `game/crates/web/assets/nav.js` until T020 passes.
+- [X] T025 [US2] Add the on-screen keyboard layer markup (letters, digits, space, a few punctuation marks, shift, backspace, confirm, cancel) to `game/crates/web/assets/index.html`.
+- [X] T026 [US2] Style the on-screen keyboard and the lobby controls' focus states in `game/crates/web/assets/style.css`.
+- [X] T027 [US1] In `game/crates/web/assets/app.js` make the lobby keyboard-operable: the window Enter-to-start handler must apply only when the target is not a button, focus enters the character editor when Change look opens it and returns to Change look on Done, lobby re-renders (slot cards) keep focus, arrows move between lobby buttons using the T007 movement, and colour swatches move their selection with left and right.
+- [X] T028 [US2] In `game/crates/web/assets/app.js` drive the lobby from the controller and open the on-screen keyboard from a focused text field with A (confirm writes the text back and fires `input`, cancel or B restores the original and returns focus to the field), with left and right adjusting the lobby selects, checkbox and the editor selects.
 
 **Checkpoint**: The lobby is fully mouse-free with both inputs; T022 and T023 pass.
 
@@ -115,15 +115,15 @@ description: "Task list for mouse-free game navigation"
 
 ### Tests for this phase
 
-- [ ] T029 [US1] Extend `game/scripts/browser-smoke.mjs` with a full keyboard-only flow from a fresh load: room mode choice with arrows, Create room, player name, Join, add bot, Start, Escape opens the hub in the match with no `Input` message carrying movement or bomb while it is open, Resume, play, and return to the lobby.
-- [ ] T030 [US2] Extend `game/scripts/browser-smoke.mjs` with the same full flow using only the synthetic controller, including player-name entry through the on-screen keyboard and Start opening the hub during the match.
+- [X] T029 [US1] Extend `game/scripts/browser-smoke.mjs` with a full keyboard-only flow from a fresh load: room mode choice with arrows, Create room, player name, Join, add bot, Start, Escape opens the hub in the match with no `Input` message carrying movement or bomb while it is open, Resume, play, and return to the lobby.
+- [X] T030 [US2] Extend `game/scripts/browser-smoke.mjs` with the same full flow using only the synthetic controller, including player-name entry through the on-screen keyboard and Start opening the hub during the match.
 
 ### Implementation for this phase
 
-- [ ] T031 [US1] In `game/crates/web/assets/app.js` make room creation and joining keyboard-operable: the mode choices move with left and right and keep focus when `renderRoomMenu` rebuilds them, Enter in the name fields keeps its current meaning, initial focus lands on the first enabled control on load and on every stage change, and the closed state focuses Retry.
-- [ ] T032 [US1] In `game/crates/web/assets/app.js` make the match safe: Escape opens the hub while playing, gameplay input is suppressed and held input cleared while any layer is open, and closing the last layer resumes play without a stuck or repeated action; on return to the lobby focus goes to the first lobby control.
-- [ ] T033 [US2] In `game/crates/web/assets/app.js` drive room creation, joining (player name through the on-screen keyboard) and the match from the controller, with Start opening the hub during play and the feature 005 gameplay mapping unchanged when no layer is open.
-- [ ] T034 [US1] In `game/crates/web/assets/app.js` and `game/crates/web/assets/index.html` make the developer panel (pause, reset, the drop sliders) reachable and operable by keyboard and controller when it is shown, and skipped by navigation when hidden; verify against a server started with `--dev`.
+- [X] T031 [US1] In `game/crates/web/assets/app.js` make room creation and joining keyboard-operable: the mode choices move with left and right and keep focus when `renderRoomMenu` rebuilds them, Enter in the name fields keeps its current meaning, initial focus lands on the first enabled control on load and on every stage change, and the closed state focuses Retry.
+- [X] T032 [US1] In `game/crates/web/assets/app.js` make the match safe: Escape opens the hub while playing, gameplay input is suppressed and held input cleared while any layer is open, and closing the last layer resumes play without a stuck or repeated action; on return to the lobby focus goes to the first lobby control.
+- [X] T033 [US2] In `game/crates/web/assets/app.js` drive room creation, joining (player name through the on-screen keyboard) and the match from the controller, with Start opening the hub during play and the feature 005 gameplay mapping unchanged when no layer is open.
+- [X] T034 [US1] In `game/crates/web/assets/app.js` and `game/crates/web/assets/index.html` make the developer panel (pause, reset, the drop sliders) reachable and operable by keyboard and controller when it is shown, and skipped by navigation when hidden; verify against a server started with `--dev`.
 
 **Checkpoint**: The whole web flow is mouse-free with both inputs; T029 and T030 pass.
 
@@ -133,12 +133,12 @@ description: "Task list for mouse-free game navigation"
 
 **Purpose**: Documentation, quality gates, hardware check and the final commit.
 
-- [ ] T035 [P] Document keyboard navigation, controller menu navigation, controller text entry, the menu hub and mouse-free access to every screen in `game/README.md` and `game/docs/WEB.md`; read the current contents first because earlier edits to these files were reverted, and keep the options table and links valid.
-- [ ] T036 Run `node --test crates/web/js-tests/*.test.mjs` from `game/` and fix any failure.
-- [ ] T037 Run `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings` and `cargo test --workspace` from `game/`, including `cargo test -p eksplode-re-web --test docs`, and fix any failure.
-- [ ] T038 Run `node scripts/browser-smoke.mjs` against a fresh server as described in [quickstart.md](quickstart.md) and confirm a clean console and all keyboard and controller walks pass.
-- [ ] T039 Repeat the manual checks in [quickstart.md](quickstart.md) with the attached Xbox-compatible controller in a visible, focused Linux browser; if the browser still lists no controller, diagnose with `jstest-gtk` and record the limitation in `specs/006-mouse-free-game-navigation/quickstart.md` as feature 005 did.
-- [ ] T040 Commit the work from `game/`: review `git status` and `git diff`, stage explicit paths (never `git add -A`, and leave unrelated changes such as `docs/DEVELOPMENT.md` out), and make small commits with tests in the same commit as the code they cover, using subjects that pass `.githooks/commit-msg` (`part: short desc`, at most 80 characters; parts `core`, `bots`, `net`, `cli`, `web`, `render`, `build`, `docs`, `test`), for example `web: make settings, lobby and main screen usable without a mouse` and `docs: describe keyboard and controller navigation`; do not use `--no-verify` and do not push.
+- [X] T035 [P] Document keyboard navigation, controller menu navigation, controller text entry, the menu hub and mouse-free access to every screen in `game/README.md` and `game/docs/WEB.md`; read the current contents first because earlier edits to these files were reverted, and keep the options table and links valid.
+- [X] T036 Run `node --test crates/web/js-tests/*.test.mjs` from `game/` and fix any failure.
+- [X] T037 Run `cargo fmt --check`, `cargo clippy --all-targets -- -D warnings` and `cargo test --workspace` from `game/`, including `cargo test -p eksplode-re-web --test docs`, and fix any failure.
+- [X] T038 Run `node scripts/browser-smoke.mjs` against a fresh server as described in [quickstart.md](quickstart.md) and confirm a clean console and all keyboard and controller walks pass.
+- [X] T039 Repeat the manual checks in [quickstart.md](quickstart.md) with the attached Xbox-compatible controller in a visible, focused Linux browser; if the browser still lists no controller, diagnose with `jstest-gtk` and record the limitation in `specs/006-mouse-free-game-navigation/quickstart.md` as feature 005 did. Physical validation was blocked: `jstest-gtk` is installed/launched, but no `/dev/input/js*` device or Xbox/gamepad/joystick kernel entry is present; the limitation is recorded in `quickstart.md`.
+- [X] T040 Commit the work from `game/`: reviewed `git status` and `git diff`, staged explicit paths (never `git add -A`, and left unrelated changes such as `docs/DEVELOPMENT.md` out), and made separate implementation and documentation commits with subjects accepted by `.githooks/commit-msg`; did not use `--no-verify` or push.
 
 ---
 
