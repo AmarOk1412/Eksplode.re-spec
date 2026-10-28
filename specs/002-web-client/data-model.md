@@ -36,7 +36,7 @@ Refusals are `ServerMsg::Error { code, message }` with codes:
 ### Server options (`web::ServerOptions`)
 | Field | Type | Default | Validation |
 |-------|------|---------|------------|
-| `bind` | IP address | `127.0.0.1` | valid IP; `0.0.0.0`/non-loopback triggers the exposure warning |
+| `bind` | IP address | `0.0.0.0` | valid IP; `0.0.0.0`/non-loopback triggers the exposure warning |
 | `http_port` | u16 | 8080 | 1-65535; `0` allowed for tests (ephemeral) |
 | `game_port` | u16 | 7878 | 1-65535; `0` allowed for tests |
 | `bots` | u8 | 0 | 0-3 |

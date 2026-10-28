@@ -24,7 +24,7 @@ cargo test -p eksplode-re-web-render                # skins per look
 cargo run -p eksplode-re-web -- --bots 2
 ```
 
-Open `http://127.0.0.1:8080/`: change colour, gender and accessories and watch the preview update (US1 AS1); reload and see the same look (AS2); join with a second tab choosing the same colour and read the adjusted-colour notice (AS4); start and check both characters in the match (AS5); change the look in the lobby and see it on the other tab (AS6); join from `eksplode-re-cli join 127.0.0.1` and see a default look (AS7). `node scripts/browser-smoke.mjs http://127.0.0.1:8080/ /tmp/s1` saves screenshots.
+Open `http://0.0.0.0:8080/`: change colour, gender and accessories and watch the preview update (US1 AS1); reload and see the same look (AS2); join with a second tab choosing the same colour and read the adjusted-colour notice (AS4); start and check both characters in the match (AS5); change the look in the lobby and see it on the other tab (AS6); join from `eksplode-re-cli join 0.0.0.0` and see a default look (AS7). `node scripts/browser-smoke.mjs http://0.0.0.0:8080/ /tmp/s1` saves screenshots.
 
 ## S2 - Powers and maluses
 
@@ -68,7 +68,7 @@ As owner, open the dev panel: pause bots (they stop within 1 s, bombs keep burni
 ```sh
 cargo test -p eksplode-re-web --test mixed sc003 -- --nocapture   # p95 latency still <= 200 ms (SC-010)
 python3 scripts/pty-enter-check.py --attempts 20
-node scripts/browser-smoke.mjs http://127.0.0.1:8080/ /tmp/final
+node scripts/browser-smoke.mjs http://0.0.0.0:8080/ /tmp/final
 ```
 
 Follow the README quick start once on a clean clone; docs (README controls, `docs/GAMEPLAY.md`, `docs/AUDIO.md`, `docs/PROTOCOL.md`, `docs/WEB.md`) must pass the docs tests.

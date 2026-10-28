@@ -6,7 +6,7 @@
 eksplode-re-server [OPTIONS]
 
 Options:
-  --bind <IP>             address to listen on (default 127.0.0.1)
+  --bind <IP>             address to listen on (default 0.0.0.0)
   --http-port <N>         web page and WebSocket port (default 8080)
   --game-port <N>         terminal client port (default 7878)
   --bots <N>              bots to add to the lobby, 0-3 (default 0)
@@ -22,12 +22,12 @@ Behaviour:
 - Prints (stdout), for example:
   ```text
   Eksplode.re server running
-    Web page:        http://127.0.0.1:8080/
-    Terminal client: eksplode-re-cli join 127.0.0.1:7878
+    Web page:        http://0.0.0.0:8080/
+    Terminal client: eksplode-re-cli join 0.0.0.0:7878
     Stop:            Ctrl+C
   ```
 - Warnings (stderr), each on its own line starting with `WARNING:`:
-  - bind is not loopback: no encryption, no authentication, anyone who can reach the ports can play; use `--bind 127.0.0.1` or a firewall/tunnel to restrict;
+  - bind is not loopback: no encryption, no authentication, anyone who can reach the ports can play; use `--bind 0.0.0.0` or a firewall/tunnel to restrict;
   - `--allow-origin`: cross-origin pages from `<ORIGIN>` can drive the game (CORS relaxed);
   - `--allow-any-origin`: any web page opened by anyone who can reach this server can drive the game (unsafe).
 - Exit codes: 0 after a clean stop (Ctrl+C), 1 runtime error (for example port in use, with the port and reason in the message), 2 usage error.
@@ -40,8 +40,8 @@ eksplode-re-cli join <ADDR[:PORT]> [--name NAME]    existing; see below for chan
 eksplode-re-cli host [--port N] [--bots N] [--name NAME] [--seed N] [--web-port N]
 ```
 
-- **`host --web-port N`** (new): additionally starts the web page on port `N` (same origin rules and warnings as the server; bound to `127.0.0.1` unless `--bind` is given) so browser players can join the game hosted from the terminal. Without the option nothing changes.
-- **`host --bind <IP>`** (new): listening address (default: the game port on `0.0.0.0` as before, the web page on `127.0.0.1`; an explicit `--bind` applies to both). A non-loopback address prints the `WARNING:` exposure line to stderr before the terminal switches screens (so the default `host` prints it, because its game port listens on every interface).
+- **`host --web-port N`** (new): additionally starts the web page on port `N` (same origin rules and warnings as the server; bound to `0.0.0.0` unless `--bind` is given) so browser players can join the game hosted from the terminal. Without the option nothing changes.
+- **`host --bind <IP>`** (new): listening address (default: the game port on `0.0.0.0` as before, the web page on `0.0.0.0`; an explicit `--bind` applies to both). A non-loopback address prints the `WARNING:` exposure line to stderr before the terminal switches screens (so the default `host` prints it, because its game port listens on every interface).
 - **`join`** (changed behaviour):
   - the address may be a web address (`http://`, `https://`, `ws://`, `wss://`): only the host is kept (the web port is not the game port) and the default game port `7878` is added;
   - the lobby accepts Enter (including LF, Ctrl+J, Ctrl+M) to start when the user is the lobby owner, and shows `Only <name> can start the match` otherwise;

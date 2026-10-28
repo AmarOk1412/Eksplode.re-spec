@@ -16,7 +16,7 @@ scripts/check-scenarios.sh      # includes the f4_* ids from this feature
 
 ```bash
 # Browser: start the server, open the page, the creation menu appears first
-cargo run -p eksplode-re-web -- --bind 127.0.0.1:8080
+cargo run -p eksplode-re-web -- --bind 0.0.0.0:8080
 
 # Server with defaults for the menu
 cargo run -p eksplode-re-web -- --mode team --size medium --time 5 --friendly-fire off

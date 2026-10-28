@@ -30,7 +30,7 @@ Start the web game from `game/`:
 cargo run -p eksplode-re-web -- --bots 1
 ```
 
-Open `http://127.0.0.1:8080/` in a visible browser window, focus the page, open the controls panel and press a button or move the stick on the connected controller. Confirm that the panel reports the controller and its standard mapping. Join a match and verify:
+Open `http://0.0.0.0:8080/` in a visible browser window, focus the page, open the controls panel and press a button or move the stick on the connected controller. Confirm that the panel reports the controller and its standard mapping. Join a match and verify:
 
 1. D-pad and left stick move in all four directions.
 2. Xbox A places a bomb and Xbox B uses punch when available.

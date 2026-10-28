@@ -9,7 +9,7 @@ DevTools protocol (join, start, keys, screenshots) and was used for the walkthro
 Server: `eksplode-re-server --http-port 18080 --game-port 17878 --bots 1 --seed 7`, browser: Chromium
 headless 1100x800 through `scripts/browser-smoke.mjs`.
 
-- [X] 1. The page loads at `http://127.0.0.1:18080/` with the name field and Join button (US1 AS1)
+- [X] 1. The page loads at `http://0.0.0.0:18080/` with the name field and Join button (US1 AS1)
 - [X] 2. Join: the lobby lists "1 bot (ready)" and "SmokeTest (you, owner)" (US1 AS2)
 - [X] 3. Start: the isometric arena appears with a coloured cube per player (red 1, blue 2) and number badges (US1 AS3)
 - [X] 4. Keys: ArrowDown, ArrowRight and Space moved the blue cube and dropped a bomb; the HUD shows `bombs 1/1` (US1 AS4)

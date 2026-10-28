@@ -37,7 +37,7 @@ Expected: bots flee blasts and do not trap themselves; soak test reports 100/100
 ```sh
 cargo test -p eksplode-re-net
 cargo run -p eksplode-re-cli -- host --bots 1          # terminal A
-cargo run -p eksplode-re-cli -- join 127.0.0.1:7878    # terminal B (and C)
+cargo run -p eksplode-re-cli -- join 0.0.0.0:7878    # terminal B (and C)
 ```
 Expected: lobby shows joined players; the host starts with Enter (a joiner gets "Only <name> can
 start the match"); all see the same state and result; killing a client terminal lets the match
@@ -46,7 +46,7 @@ continue with a bot; a 5th join is refused.
 ## Stage 4 - Graphical version (replaced by the web page)
 The native window was dropped. See `specs/002-web-client/quickstart.md`:
 ```sh
-cargo run -p eksplode-re-web -- --bots 1       # open http://127.0.0.1:8080/
+cargo run -p eksplode-re-web -- --bots 1       # open http://0.0.0.0:8080/
 cargo test -p eksplode-re-web-render           # isometric view, cubes, draw commands
 ```
 Expected: isometric arena, four coloured cubes, same rules and outcomes as the terminal for the

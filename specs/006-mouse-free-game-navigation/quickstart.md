@@ -19,9 +19,9 @@ Expected: the navigation tests (rectangle movement, layer stack, controller edge
 
 ```sh
 cargo run -p eksplode-re-web -- --bots 1 --http-port 8090 --game-port 7890
-node scripts/browser-smoke.mjs http://127.0.0.1:8090/ /tmp/nav-smoke
-MAIN_FLOW=keyboard node scripts/browser-smoke.mjs http://127.0.0.1:8090/ /tmp/nav-main-keyboard
-MAIN_FLOW=controller node scripts/browser-smoke.mjs http://127.0.0.1:8090/ /tmp/nav-main-controller
+node scripts/browser-smoke.mjs http://0.0.0.0:8090/ /tmp/nav-smoke
+MAIN_FLOW=keyboard node scripts/browser-smoke.mjs http://0.0.0.0:8090/ /tmp/nav-main-keyboard
+MAIN_FLOW=controller node scripts/browser-smoke.mjs http://0.0.0.0:8090/ /tmp/nav-main-controller
 ```
 
 Run each flow against a fresh server process. The default smoke covers settings, OSK entry, lobby controls, peer ownership and a match; the `MAIN_FLOW` variants start from a clean room and cover create, join, lobby, match and the in-match hub using only that input method. Expected: clean console and no movement, bomb or punch input while a layer is open.

@@ -22,17 +22,17 @@ Expected: 4 distinct coloured cubes with badges, depth order back to front, dete
 cargo test -p eksplode-re-web                 # http, origin, websocket, mixed, node tests
 cargo run -p eksplode-re-web -- --bots 1      # prints web page and terminal addresses
 ```
-Expected output shows `Web page: http://127.0.0.1:8080/` and `Terminal client: eksplode-re-cli join 127.0.0.1:7878`. Check origin policy:
+Expected output shows `Web page: http://0.0.0.0:8080/` and `Terminal client: eksplode-re-cli join 0.0.0.0:7878`. Check origin policy:
 ```sh
 curl -i -H 'Origin: http://evil.example' -H 'Connection: Upgrade' -H 'Upgrade: websocket' \
      -H 'Sec-WebSocket-Version: 13' -H 'Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==' \
-     http://127.0.0.1:8080/ws          # expect HTTP/1.1 403 (not 101)
+     http://0.0.0.0:8080/ws          # expect HTTP/1.1 403 (not 101)
 cargo run -p eksplode-re-web -- --allow-origin http://localhost:3000   # expect a WARNING line
 cargo run -p eksplode-re-web -- --bind 0.0.0.0                         # expect the exposure WARNING
 ```
 
 ## Stage B3 - Browser page (US1, US2)
-1. `cargo run -p eksplode-re-web -- --bots 1`, open `http://127.0.0.1:8080/` in a browser.
+1. `cargo run -p eksplode-re-web -- --bots 1`, open `http://0.0.0.0:8080/` in a browser.
 2. Enter a name, join: the lobby shows your slot marked "you" and the bot.
 3. Press Start (or Enter): the isometric arena appears with a coloured cube per player and a number badge.
 4. Move with arrows or WASD, bomb with Space or E: bombs pulse, flames spread, blocks break, power-ups appear.
@@ -45,8 +45,8 @@ Manual visual checklist (SC-004, SC-005): four colours distinguishable, badges l
 ## Stage B3 - Mixed match (US2, SC-002)
 ```sh
 cargo run -p eksplode-re-web -- --bots 1                 # terminal A
-cargo run -p eksplode-re-cli -- join 127.0.0.1:7878      # terminal B
-# browser tab joins http://127.0.0.1:8080/ ; the first to join (owner) presses Start
+cargo run -p eksplode-re-cli -- join 0.0.0.0:7878      # terminal B
+# browser tab joins http://0.0.0.0:8080/ ; the first to join (owner) presses Start
 ```
 Expected: all three see the same arena and result; `cargo test -p eksplode-re-web --test mixed` automates this.
 
@@ -54,7 +54,7 @@ Expected: all three see the same arena and result; `cargo test -p eksplode-re-we
 ```sh
 cargo test -p eksplode-re-cli
 cargo run -p eksplode-re-cli -- host --bots 1 --web-port 8081    # terminal host + web page
-cargo run -p eksplode-re-cli -- join 127.0.0.1                   # joins on the default port
+cargo run -p eksplode-re-cli -- join 0.0.0.0                   # joins on the default port
 ```
 Expected: the host shows the web URL in its lobby; browser and terminal joiners appear in the same lobby; a closed port gives a clear error and exit status 1.
 

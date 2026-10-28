@@ -25,7 +25,7 @@ All items from the Technical Context are resolved; no NEEDS CLARIFICATION remain
 - **Alternatives**: always `*` (unsafe); no check (any web page could connect to a LAN server from a visitor's browser).
 
 ## R5. Bind address, exposure and address printing
-- **Decision**: default bind `127.0.0.1` for HTTP and game ports; `--bind 0.0.0.0` exposes to the network and prints the warning "no encryption, no authentication, anyone on the network can play". Printed addresses: loopback plus the primary LAN address found with the UDP-connect trick (no packet is sent); other interfaces are reachable with the same port.
+- **Decision**: default bind `0.0.0.0` for HTTP and game ports; `--bind 0.0.0.0` exposes to the network and prints the warning "no encryption, no authentication, anyone on the network can play". Printed addresses: loopback plus the primary LAN address found with the UDP-connect trick (no packet is sent); other interfaces are reachable with the same port.
 - **Rationale**: safe default, explicit opt-in; std only (no interface-enumeration crate).
 - **Alternatives**: bind all interfaces by default (surprising exposure); enumerate all interfaces with a crate (extra dependency for a convenience message; documented as a limitation).
 

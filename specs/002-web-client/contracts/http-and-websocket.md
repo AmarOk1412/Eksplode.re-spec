@@ -1,6 +1,6 @@
 # Contract: HTTP and WebSocket
 
-Served by `eksplode-re-server` (crate `eksplode-re-web`). Default addresses: HTTP and WebSocket on `127.0.0.1:8080`; terminal clients on TCP `127.0.0.1:7878`.
+Served by `eksplode-re-server` (crate `eksplode-re-web`). Default addresses: HTTP and WebSocket on `0.0.0.0:8080`; terminal clients on TCP `0.0.0.0:7878`.
 
 ## HTTP routes
 
