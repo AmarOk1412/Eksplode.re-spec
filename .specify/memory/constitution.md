@@ -1,13 +1,12 @@
 <!--
 Sync Impact Report
-- Version change: 1.0.0 → 1.1.0
-- Modified principles: VI (the graphical version is the web page); Technology & Platform
-  Constraints (crate list: gui replaced by web and web-render; one narrow unsafe exception for the
-  WebAssembly memory exchange; presentation-only HTML/JS allowed)
+- Version change: 1.1.0 → 1.2.0
+- Modified principles: none
+- Modified sections: Development Workflow & Quality Gates (added atomic commit and readable
+  history requirements)
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
-Earlier report (1.0.0): initial adoption of principles I-VI.
 -->
 # Eksplode.re Constitution
 
@@ -83,6 +82,12 @@ interfaces are required deliverables.
 - Public APIs in `core` MUST have doc comments; user-facing controls and CLI flags MUST be
   documented in the README.
 - Changes that deviate from a spec or plan MUST update the spec or plan in the same change.
+- Each commit MUST contain one coherent feature, fix, or maintenance concern and remain small
+  enough for a human to review. Unrelated changes MUST be split into separate commits. A change
+  that cannot reasonably be split without obscuring correctness MUST remain atomic, with its
+  scope explained in the associated change description. Commit messages MUST be concise and
+  state the purpose; commit history MUST make the progression of changes understandable to a
+  human.
 
 ## Governance
 
@@ -93,4 +98,4 @@ added principles or materially expanded guidance, PATCH for clarifications. Ever
 include a Constitution Check, and reviews MUST verify compliance; any violation MUST be
 justified in the plan's complexity tracking.
 
-**Version**: 1.1.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-22
+**Version**: 1.2.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-28

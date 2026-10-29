@@ -5,6 +5,8 @@ compatibility: "Requires spec-kit project structure with .specify/ directory"
 metadata:
   author: "github-spec-kit"
   source: "templates/commands/converge.md"
+user-invocable: true
+disable-model-invocation: false
 ---
 
 
@@ -146,12 +148,6 @@ Create an internal model (do not echo raw artifacts):
   scope beyond what the artifacts define.
 
 ### 4. Assess the Codebase and Classify Findings
-
-Include every existing task in the intent inventory, regardless of checkbox state or
-Convergence phase: completion claims are not evidence. Verify current behavior against
-the spec, plan, tasks, and constitution; for corrective task chains, assess the resulting
-behavior, not superseded implementation details. Check both unmet obligations and
-implementation that contradicts, exceeds, or falls outside the stated intent.
 
 For each item in the intent inventory, inspect the current code in scope and produce a
 `Finding` only where there is a gap. Classify every finding by **gap type**:
