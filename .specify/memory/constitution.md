@@ -1,9 +1,9 @@
 <!--
 Sync Impact Report
-- Version change: 1.1.0 → 1.2.0
+- Version change: 1.3.0 → 1.4.0
 - Modified principles: none
-- Modified sections: Development Workflow & Quality Gates (added atomic commit and readable
-  history requirements)
+- Modified sections: Development Workflow & Quality Gates (allow a per-feature `game_spec_<id>`
+  git worktree for parallel feature work, merged into `game`'s main branch before completion)
 - Added sections: none
 - Removed sections: none
 - Follow-up TODOs: none
@@ -87,7 +87,18 @@ interfaces are required deliverables.
   that cannot reasonably be split without obscuring correctness MUST remain atomic, with its
   scope explained in the associated change description. Commit messages MUST be concise and
   state the purpose; commit history MUST make the progression of changes understandable to a
-  human.
+  human. Commit messages MUST NOT include trailers, tags, or boilerplate that add no information
+  for a human reader, such as tool-attribution lines (e.g. "Co-Authored-By:" added by an AI
+  coding assistant); only include a trailer when it conveys real, reviewer-relevant information
+  (e.g. "Fixes #123").
+- To work on multiple features in parallel, a contributor MAY create a separate git worktree of
+  the `game` repository per feature, named `game_spec_<feature-id>` (e.g.
+  `game_spec_009-ci-push-validation`), checked out on its own branch. All quality gates above
+  (tests, clippy, fmt, spec traceability) apply to that worktree exactly as they would to `game`
+  directly. The branch MUST be merged into `game`'s main branch, with all gates still passing,
+  before the feature is considered done; the worktree MAY then be removed. Rationale: isolates
+  each feature's working tree and build artifacts so unrelated in-progress specs do not block or
+  interfere with one another, without requiring a separate clone per feature.
 
 ## Governance
 
@@ -98,4 +109,4 @@ added principles or materially expanded guidance, PATCH for clarifications. Ever
 include a Constitution Check, and reviews MUST verify compliance; any violation MUST be
 justified in the plan's complexity tracking.
 
-**Version**: 1.2.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-28
+**Version**: 1.4.0 | **Ratified**: 2026-10-22 | **Last Amended**: 2026-10-29
