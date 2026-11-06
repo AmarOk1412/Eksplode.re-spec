@@ -24,7 +24,7 @@ Methods: `sanitize(self) -> RoomSettings` (applies the limits and defaults), `to
 | `friendly_fire: bool` | `true` | Team only |
 | `closing_ticks: u32` | `60 * tick_hz` | duration of the pattern (Normal, Team) |
 | `closing_lead_ticks: u32` | 20 | countdown of an announced square |
-| `chaser_bombs: u8` | 2 | bombs of the chaser |
+| `chaser_bombs: u8` | 5 | bombs of the chaser |
 | `chaser_hearts: u8` | 3 | hearts of the chaser |
 | `shield_ticks: u32` | 40 | protection after a heart is lost |
 | `chaser_pillar_mod: u8` | 3 | keeps pillars with `(x/2 + y/2) % mod == 0` |

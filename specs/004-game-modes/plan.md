@@ -6,7 +6,7 @@
 
 ## Summary
 
-A room becomes a described thing: one self-contained `RoomSettings` (name, mode, board size, round time, friendly fire) that the first person fills in on a **room creation menu**, that every participant sees in the lobby and that only the owner may change before a match. Three modes use it: **Normal** (today's rules plus an **end pattern** that closes the board in the last 60 seconds until one player is left), **Team** (2 against 2 with a friendly-fire switch) and **Chaser** (one chaser with 2 bombs and 3 hearts against three bomb-less runners on a nearly open board with random bonuses). The delivery order follows the request: room menu first, then the end pattern, then the other settings (size, time), then the new modes.
+A room becomes a described thing: one self-contained `RoomSettings` (name, mode, board size, round time, friendly fire) that the first person fills in on a **room creation menu**, that every participant sees in the lobby and that only the owner may change before a match. Three modes use it: **Normal** (today's rules plus an **end pattern** that closes the board in the last 60 seconds until one player is left), **Team** (2 against 2 with a friendly-fire switch) and **Chaser** (one chaser with 5 bombs and 3 hearts against three bomb-less runners on a nearly open board with random bonuses). The delivery order follows the request: room menu first, then the end pattern, then the other settings (size, time), then the new modes.
 
 Technical approach (details in [research.md](research.md)):
 
